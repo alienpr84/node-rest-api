@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  api:
+    image: restful_image
+    container_name: restful_container
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/usr/src/app
+  database:
+    image: mongo:4.2
+    container_name: restful_db_container
+    environment:
+      - MONGO_INITDB_DATABASE=restfulDB
+      - MONGO_INITDB_ROOT_USERNAME=restful
+      - MONGO_INITDB_ROOT_PASSWORD=restful123
+    volumes:
+      - ./src/config/database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - restful_mongodb:/data/db
+    ports:
+      - 27017:27017
+
+volumes: 
+  restful_mongodb:
+    driver: local
+
