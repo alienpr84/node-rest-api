@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-export default interface IController {
+export default interface IBaseController {
   create(req: Request, res: Response): Promise<void>;
   get(req: Request, res: Response): Promise<void>;
   getById(req: Request, res: Response): Promise<void>;

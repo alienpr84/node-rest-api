@@ -2,8 +2,8 @@ version: "3"
 
 services:
   api:
-    image: restful_image
-    container_name: restful_container
+    image: restful_api_image
+    container_name: restful_api_container
     build: .
     ports:
       - "5000:5000"

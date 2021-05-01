@@ -1,11 +1,13 @@
 import { Express } from 'express';
-import Server from './app';
+import server from './app';
+import { config, dbConnection } from './config';
 
-async function Main(): Promise<void> {
-  const app: Express = Server();
-  await app.listen(5000);
+async function main() {
+  dbConnection();
 
-  console.log('Server listen on port: 5000');
+  const app: Express = server();
+  await app.listen(config.port);
+  console.log('Server listen on port: ' + config.port);
 }
 
-Main();
+main();

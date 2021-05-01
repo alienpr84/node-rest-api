@@ -1,10 +1,16 @@
-import express, { Express } from 'express';
+import express, { Express, Request, Response } from 'express';
+import router from './routes';
 
-export default function Server(): Express {
+export default function server(): Express {
   const app: Express = express();
 
-  // for testing only
-  app.get('/', (req, resp) => {
+  // middleware
+  app.use(express.json());
+
+  // router
+  app.use('/api', router);
+
+  app.get('/test', (req: Request, resp: Response) => {
     resp.json('hello world');
   });
 
