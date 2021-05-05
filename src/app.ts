@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import router from './routes';
 
 export default function server(): Express {
@@ -9,10 +9,6 @@ export default function server(): Express {
 
   // router
   app.use('/api', router);
-
-  app.get('/test', (req: Request, resp: Response) => {
-    resp.json('hello world');
-  });
 
   return app;
 }

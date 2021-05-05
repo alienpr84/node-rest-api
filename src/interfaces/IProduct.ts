@@ -5,5 +5,5 @@ export default interface IProduct extends Document {
   price: number;
   dueDate: Date;
   description: string;
-  categoryOwner: any;
+  categoryOwner: {type: Schema.Types.ObjectId, ref: string};
 }

@@ -5,7 +5,7 @@ import { categorySchema } from '../schemas';
 
 export default function categoryRouter(router: Router): void {
   router
-    .post('/categories', joiMiddleware.validateData(categorySchema.create), CategoriesController.create)
+    .post('/categories', CategoriesController.create)
     .get('/categories', CategoriesController.get)
     .get('/categories/:id',joiMiddleware.validateData(categorySchema.getById), CategoriesController.getById)
     .put('/categories/:id',joiMiddleware.validateData(categorySchema.update), CategoriesController.update)

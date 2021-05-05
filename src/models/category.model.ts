@@ -5,8 +5,8 @@ import { ICategory } from '../interfaces';
 const schema: Schema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
+    // unique: true
   },
   products: [
     {
@@ -17,8 +17,8 @@ const schema: Schema = new Schema({
 });
 
 // validations
-schema.path('name').validate(function(value: string) {
-  return /^^[A-Z]+(\s)?[A-Z]*(\s)?[A-Z]*$/gi.test(value);
-}, 'The value enter isn\'t valid. Only letters and spaces are allowed.');
+// schema.path('name').validate(function(value: string) {
+//   return /^^[A-Z]+(\s)?[A-Z]*(\s)?[A-Z]*$/gi.test(value);
+// }, 'The value enter isn\'t valid. Only letters and spaces are allowed.');
 
 export default mongoose.model<ICategory>('Category', schema);

@@ -2,7 +2,6 @@ import { Request, Response} from 'express';
 import { IBaseController, ICategory } from '../interfaces';
 import CategoryModel from '../models/category.model';
 
-
 const controller: IBaseController = {} as IBaseController;
 
 controller.create = async (req: Request, res: Response): Promise<void> => {
@@ -17,9 +16,8 @@ controller.create = async (req: Request, res: Response): Promise<void> => {
 }
 
 controller.get = async (req: Request, res: Response): Promise<void> => {
-  console.log('hey how are you')
   try {
-    const models: ICategory[] = await CategoryModel.find();
+    const models = await CategoryModel.find();
     res.status(200).json(models);
   } catch (error) {
     res.status(400).json(error.message);

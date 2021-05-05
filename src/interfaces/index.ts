@@ -5,3 +5,4 @@ export { default as IJoi } from './IJoi';
 export { default as IUser } from './IUser';
 export { default as IProduct } from './IProduct';
 export { default as ICategoryController } from './ICategoryController';
+export { default as IDBConnection } from './IDBConnection';

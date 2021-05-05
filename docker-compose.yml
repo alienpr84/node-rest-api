@@ -13,9 +13,9 @@ services:
     image: mongo:4.2
     container_name: restful_db_container
     environment:
-      - MONGO_INITDB_DATABASE=restfulDB
-      - MONGO_INITDB_ROOT_USERNAME=restful
-      - MONGO_INITDB_ROOT_PASSWORD=restful123
+      - MONGO_INITDB_DATABASE=root
+      - MONGO_INITDB_ROOT_USERNAME=root123
+      - MONGO_INITDB_ROOT_PASSWORD=rootDB
     volumes:
       - ./src/config/database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - restful_mongodb:/data/db
