@@ -21,7 +21,7 @@ describe('POST /api/categories', () => {
       .post('/api/categories')
       .set('Accept', 'application/json')
       .send({name: 'Shoes for women'})
-      .expect(201);
+      .expect(400);
   });
 });
 

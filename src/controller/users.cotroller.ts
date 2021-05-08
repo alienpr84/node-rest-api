@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import { IBaseController, IUser } from '../interfaces';
+import { IUserController, IUser } from '../interfaces';
 import UserModel from '../models/user.model';
+import faker from 'faker';
 
-const controller: IBaseController = {} as IBaseController;
+const controller: IUserController = {} as IUserController;
 
 controller.create = async (req: Request, res: Response): Promise<void> => {
   const model: IUser = new UserModel(req.body);
@@ -49,5 +50,43 @@ controller.delete = async (req: Request, res: Response): Promise<void> => {
     res.status(400).json(error.message);
   }
 }
+
+controller.createManyWithFaker = async (req: Request, res: Response): Promise<void> => {
+  const userArray: Object[] = [];
+  const quantity: number = +req.params.quantity
+
+  for(let i=0; i < quantity; i++) {
+    userArray.push({
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      phone: faker.phone.phoneNumber()
+    })
+  }
+
+  console.log(userArray)
+
+  try {
+    const model: IUser = new UserModel();
+    await model.collection.insertMany(userArray);
+    res.status(201).json('Collection of users created successfully.');
+  }
+  catch (error: unknown) {
+    res.status(400).json(error);
+  }
+}
+
+controller.infiniteScroll = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const count: number = req.query.count ? +req.query.count : 10;
+    const page: number = req.query.page ? +req.query.page : 1;
+    const models: IUser[] = await UserModel.find().skip(count * (page - 1)).limit(count);
+    res.status(200).json(models);
+  }
+  catch(error) {
+    res.status(400).json(error);
+  }
+}
+
 
 export default controller;

@@ -26,9 +26,14 @@ const getById: ObjectSchema = joi.object().keys({
   id: joi.string().required()
 });
 
+const createManyWithFaker: ObjectSchema = joi.object().keys({
+  quantity: joi.number().required()
+})
+
 export default {
   create,
   update,
   remove,
-  getById
+  getById,
+  createManyWithFaker
 }
