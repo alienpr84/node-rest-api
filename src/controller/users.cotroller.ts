@@ -64,8 +64,6 @@ controller.createManyWithFaker = async (req: Request, res: Response): Promise<vo
     })
   }
 
-  console.log(userArray)
-
   try {
     const model: IUser = new UserModel();
     await model.collection.insertMany(userArray);
