@@ -1,4 +1,3 @@
-import { boolean } from 'joi';
 import mongoose, { Schema } from 'mongoose';
 import { IUser } from '../interfaces';
 

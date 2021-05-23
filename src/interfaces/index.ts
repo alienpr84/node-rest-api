@@ -7,3 +7,5 @@ export { default as IProduct } from './IProduct';
 export { default as ICategoryController } from './ICategoryController';
 export { default as IDBConnection } from './IDBConnection';
 export { default as IUserController } from './IUserController';
+export { default as ICRMContacts } from './ICRMContacts';
+export { default as ICRMContactsController } from './ICRMContactsController';
